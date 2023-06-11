@@ -1,0 +1,11 @@
+<div class="add-comment">
+  <mat-form-field>
+    <mat-label>Add comment</mat-label>
+    <textarea matInput [(ngModel)]="comment"></textarea>
+  </mat-form-field>
+  <button
+    [disabled]="!comment.trim()"
+    mat-button
+    (click)="addComment()"
+  >Add</button>
+</div>

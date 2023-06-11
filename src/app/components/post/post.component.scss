@@ -1,0 +1,24 @@
+.post {
+  &__body {
+    padding: 10px 0;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 0 10px 10px;
+  }
+
+  &__comments-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__comments {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}

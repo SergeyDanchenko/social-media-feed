@@ -1,3 +1,11 @@
 mat-toolbar {
   background: #9c27b0;
 }
+
+.container {
+  height: calc(100% - 64px);
+}
+
+mat-list-item {
+  cursor: pointer !important;
+}

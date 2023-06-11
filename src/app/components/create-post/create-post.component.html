@@ -1,0 +1,34 @@
+<div class="new-post-form__container">
+  <form class="new-post-form" [formGroup]="postForm">
+    <h2>Crete new post</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Add post title</mat-label>
+        <input matInput placeholder="text..." formControlName="title">
+        <mat-error *ngIf="getFormControl('title')?.hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="getFormControl('title')?.hasError('minlength')">
+          Title should contain atleast <strong>3</strong> characters
+        </mat-error>
+        <mat-error *ngIf="getFormControl('title')?.hasError('maxlength')">
+          Title should contain max <strong>10</strong> characters
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Add post body</mat-label>
+        <textarea cdkTextareaAutosize matInput formControlName="body"></textarea>
+        <mat-error *ngIf="getFormControl('body')?.hasError('maxlength')">
+          Body should contain max <strong>200</strong> characters
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <button
+      [disabled]="postForm.invalid"
+      mat-button
+      (click)="createPost()"
+    >Create</button>
+  </form>
+</div>

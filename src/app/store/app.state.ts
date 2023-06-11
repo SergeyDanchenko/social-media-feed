@@ -1,18 +1,17 @@
 import { Post } from '../models/post.interface';
+import { PostComment } from '../models/comment.interface';
 
 export interface AppState {
-  feed: FeedState;
-}
-
-export interface FeedState {
   posts: Post[];
-}
-
-export const initialFeedState: FeedState =  {
-  posts: [],
+  postsPending: boolean;
+  comments: PostComment[];
+  postsWithPendingComments: number[];
 }
 
 export const initialAppState: AppState = {
-  feed: initialFeedState,
+  posts: [],
+  postsPending: false,
+  comments: [],
+  postsWithPendingComments: [],
 };
 
