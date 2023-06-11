@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeedComponent } from './components/feed/feed.component';
-import {CreatePostComponent} from "./components/create-post/create-post.component";
+import { FeedPageComponent } from './pages/feed-page/feed-page.component';
+import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
 
 const routes: Routes = [
-  { path: 'feed', component: FeedComponent, pathMatch: 'full' },
-  { path: 'add-post', component: CreatePostComponent, pathMatch: 'full' },
+  { path: 'feed', component: FeedPageComponent, pathMatch: 'full' },
+  { path: 'add-post', component: CreatePostPageComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '/feed' }
 ];
 

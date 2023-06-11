@@ -1,15 +1,20 @@
 :host {
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.example-viewport {
+.viewport {
   height: 100%;
   width: 100%;
 }
 
 .post-wrapper {
+  max-width: 700px;
+}
+
+mat-progress-bar  {
   max-width: 700px;
 }

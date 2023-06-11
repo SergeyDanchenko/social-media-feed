@@ -25,3 +25,13 @@ export const selectCommentsForPostPending = createSelector(
   (state: AppState, { postId }: { postId: number }) =>
     state.postsWithPendingComments.indexOf(postId) !== -1
 );
+
+export const selectPostQueryParams = createSelector(
+  selectState,
+  (state: AppState) => state.postsQueryParams
+);
+
+export const hasMorePosts = createSelector(
+  selectState,
+  (state: AppState) => state.hasMorePosts
+)

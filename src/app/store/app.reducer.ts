@@ -2,16 +2,23 @@ import { createReducer, on } from '@ngrx/store';
 import { initialAppState } from './app.state';
 import {
   addCommentSuccess,
-  getCommentsForPost,
+  getCommentsForPost, getCommentsForPostError,
   getCommentsForPostSuccess,
   getPosts,
-  getPostsSuccess
+  getPostsSuccess, setInitialState, setPostsQueryParams
 } from './app.actions';
 
 export const reducer = createReducer(
   initialAppState,
   on(getPosts, state => ({ ...state, postsPending: true })),
-  on(getPostsSuccess, (state, { posts }) => ({ ...state, posts, postsPending: false })),
+  on(getPostsSuccess, (state, { posts, total }) => (
+    {
+      ...state,
+      posts: [...state.posts, ...posts],
+      postsPending: false,
+      hasMorePosts: total >= state.postsQueryParams.skip
+    }
+  )),
   on(getCommentsForPost, (state, { postId }) => (
     { ...state, postsWithPendingComments: [...state.postsWithPendingComments, postId] }
   )),
@@ -22,7 +29,14 @@ export const reducer = createReducer(
       postsWithPendingComments: state.postsWithPendingComments.filter(id => id !== postId)
     }
   )),
+  on(getCommentsForPostError, (state, { postId }) => (
+    { ...state,
+      postsWithPendingComments: state.postsWithPendingComments.filter(id => id !== postId)
+    }
+  )),
   on(addCommentSuccess, (state, { comment }) => (
     { ...state, comments: [...state.comments, comment] }
-  ))
+  )),
+  on(setPostsQueryParams, (state, { postsQueryParams }) => ({ ...state, postsQueryParams })),
+  on(setInitialState, () => initialAppState),
 );

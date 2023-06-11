@@ -1,18 +1,20 @@
 <cdk-virtual-scroll-viewport
-  *ngIf="!(postsPending$ | async); else spinner"
   appendOnly
-  itemSize="100"
-  class="example-viewport">
-  <div class="post-wrapper" *ngFor="let post of posts$ | async">
+  itemSize="200"
+  class="viewport"
+>
+  <div
+    class="post-wrapper"
+    *cdkVirtualFor="let post of posts; trackBy: identify"
+  >
     <app-post
       [post]="post"
       [comments]="getCommentsForPost$(post.id) | async"
       [commentsPending]="getCommentsForPostPending$(post.id) | async"
     ></app-post>
   </div>
+  <mat-progress-bar
+    *ngIf="postsPending"
+    mode="indeterminate"
+  ></mat-progress-bar>
 </cdk-virtual-scroll-viewport>
-
-<ng-template #spinner>
-  <mat-spinner></mat-spinner>
-</ng-template>
-

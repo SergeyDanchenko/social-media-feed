@@ -1,0 +1,9 @@
+<app-feed
+  *ngIf="(posts$ | async)?.length; else spinner"
+  [posts]="posts$ | async"
+  [postsPending]="postsPending$ | async"
+></app-feed>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -16,8 +16,10 @@ import { PostComponent } from './components/post/post.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { FeedPageComponent } from './pages/feed-page/feed-page.component';
+import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     PostComponent,
     CommentComponent,
     CreatePostComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    FeedPageComponent,
+    CreatePostPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +38,8 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    StoreModule.forRoot({feed: reducer}),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    StoreModule.forRoot({ feed: reducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([AppEffects]),
     ScrollingModule,
     ReactiveFormsModule,
