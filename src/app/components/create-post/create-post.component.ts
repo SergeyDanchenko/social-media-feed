@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Store} from "@ngrx/store";
-import {createPost} from "../../store/app.actions";
-import {Post} from "../../models/post.interface";
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { createPost } from '../../store/app.actions';
+import { Post } from '../../models/post.interface';
 
 @Component({
   selector: 'app-create-post',

@@ -1,5 +1,5 @@
 <div class="new-post-form__container">
-  <form class="new-post-form" [formGroup]="postForm">
+  <form class="new-post-form" [formGroup]="postForm" (ngSubmit)="createPost()">
     <h2>Crete new post</h2>
     <p>
       <mat-form-field appearance="fill">
@@ -12,7 +12,7 @@
           Title should contain atleast <strong>3</strong> characters
         </mat-error>
         <mat-error *ngIf="getFormControl('title')?.hasError('maxlength')">
-          Title should contain max <strong>10</strong> characters
+          Title should contain max <strong>50</strong> characters
         </mat-error>
       </mat-form-field>
     </p>
@@ -28,7 +28,7 @@
     <button
       [disabled]="postForm.invalid"
       mat-button
-      (click)="createPost()"
+      type="submit"
     >Create</button>
   </form>
 </div>
