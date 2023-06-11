@@ -34,6 +34,10 @@ export class PostsService {
   }
 
   public addComment(body: AddCommentRequest): Observable<PostComment> {
-    return this._httpClient.post<PostComment>(`${PostsService.BASE_URL}/comment/add`, body)
+    return this._httpClient.post<PostComment>(`${PostsService.BASE_URL}/comment/add`, body);
+  }
+
+  public updatePost(post: Partial<Post>): Observable<Post> {
+    return this._httpClient.put<Post>(`${PostsService.BASE_URL}/posts/${post.id}`, { ...post });
   }
 }

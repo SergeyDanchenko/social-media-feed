@@ -8,20 +8,23 @@
   <mat-card-actions>
     <div class="post__actions">
       <mat-icon
+        class="post__like"
+        [class.post__like_liked]="post?.liked"
         [matBadge]="post?.reactions"
         matBadgeSize="small"
         aria-hidden="false"
-        fontIcon="home"
+        svgIcon="thumbs-up"
+        (click)="toggleLike()"
       ></mat-icon>
       <button
         mat-button
         (click)="onToggleComments()"
       >
-        {{ (showComments ? 'Hide' : 'Show') + ' comments' }}
+        {{ (post?.showComments ? 'Hide' : 'Show') + ' comments' }}
       </button>
     </div>
   </mat-card-actions>
-  <mat-card-content *ngIf="showComments">
+  <mat-card-content *ngIf="post?.showComments">
     <div class="post__comments" *ngIf="!commentsPending; else progressBar">
       <app-comment
         *ngFor="let comment of comments; trackBy: identify"

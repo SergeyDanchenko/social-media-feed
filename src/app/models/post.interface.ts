@@ -6,4 +6,6 @@ export interface Post {
   tags: string[];
   reactions: number;
   creationTime?: number;
+  showComments?: boolean;
+  liked?: boolean;
 }

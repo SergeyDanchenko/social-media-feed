@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Post } from '../../models/post.interface';
 import { PostComment } from '../../models/comment.interface';
 import { Store } from '@ngrx/store';
-import { getCommentsForPost } from '../../store/app.actions';
+import { getCommentsForPost, updatePostServer, updatePostUI } from '../../store/app.actions';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-post',
@@ -14,15 +15,25 @@ export class PostComponent {
   @Input() comments: PostComment[] | null = [];
   @Input() commentsPending: boolean | null = false;
 
-  public showComments: boolean = false;
-
   constructor(private _store: Store) {}
 
   public onToggleComments(): void {
-    this.showComments = !this.showComments;
-    if (this.comments?.length === 0 && this.showComments) {
+    const post: Post = cloneDeep(this.post as Post);
+    post.showComments = !this.post?.showComments;
+    this._store.dispatch(updatePostUI({ post }));
+    if (this.comments?.length === 0 && post.showComments) {
       this._store.dispatch(getCommentsForPost({ postId: this.post?.id as number }));
     }
+  }
+
+  public toggleLike(): void {
+    this._store.dispatch(updatePostServer({ post:
+        {
+          ...this.post,
+          reactions: this.post?.reactions as number + (this.post?.liked ? -1 : 1),
+          liked: !this.post?.liked
+        }
+    }))
   }
 
   public identify(index: number, comment: PostComment): number {

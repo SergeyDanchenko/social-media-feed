@@ -37,9 +37,30 @@ export const getCommentsForPostSuccess = createAction(
   props<{ comments: PostComment[]; postId: number }>()
 );
 
-export const getCommentsForPostError= createAction(
+export const getCommentsForPostError = createAction(
   '[Post Component] Get Comments For Post Error',
   props<{ postId: number }>()
+);
+
+// Update Post Server
+export const updatePostServer = createAction(
+  '[Post Component] Update Post Server',
+  props<{ post: Partial<Post> }>()
+)
+
+export const updatePostServerSuccess = createAction(
+  '[Post Component] Update Post Server Success',
+  props<{ post: Post }>()
+);
+
+export const updatePostServerError = createAction(
+  '[Post Component] Update Post Server Error',
+);
+
+// Update post UI
+export const updatePostUI = createAction(
+  '[Post Component] Update Post UI',
+  props<{ post: Post }>()
 );
 
 // Add Comment

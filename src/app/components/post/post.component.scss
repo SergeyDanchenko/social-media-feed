@@ -10,6 +10,14 @@
     padding: 0 0 10px 10px;
   }
 
+  &__like {
+    cursor: pointer;
+
+    &_liked {
+      fill: #303030;
+    }
+  }
+
   &__comments-wrapper {
     display: flex;
     align-items: center;
