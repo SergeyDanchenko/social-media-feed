@@ -17,7 +17,7 @@ export class AddCommentComponent {
 
   public addComment(): void {
     const addCommentRequestBody: Partial<AddCommentRequest> = {
-      body: this.comment,
+      body: this.comment.trim(),
       postId: this.postId,
     };
     this.comment = '';

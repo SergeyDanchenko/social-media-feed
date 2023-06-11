@@ -1,12 +1,12 @@
-.example-header-image {
-  background-image: url('https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png');
-  background-size: cover;
-}
-
 .comment {
   background: #303030;
   border-radius: 6px;
   padding: 10px;
+
+  &__avatar {
+    background-image: url('https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png');
+    background-size: cover;
+  }
 
   &__header {
     display: flex;

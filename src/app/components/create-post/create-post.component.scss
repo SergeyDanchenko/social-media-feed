@@ -18,3 +18,11 @@
 mat-form-field {
   width: 100%;
 }
+
+@media (max-width: 800px) {
+  .new-post-form {
+    &__container {
+      width: 90%;
+    }
+  }
+}

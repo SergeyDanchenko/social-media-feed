@@ -18,3 +18,9 @@
 mat-progress-bar  {
   max-width: 700px;
 }
+
+@media (max-width: 690px) {
+  .post-wrapper {
+    max-width: 90%;
+  }
+}
